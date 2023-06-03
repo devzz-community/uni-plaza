@@ -1,3 +1,10 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+"""Вход пользователя"""
+def login(request):
+    return render(request, 'users/login.html')
+
+"""Регистрация пользователя"""
+def register(request):
+    return render(request, 'users/register.html')
