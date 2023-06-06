@@ -50,114 +50,25 @@
 
             <div class="row">
 
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#">
-                            <img class="card-img-top"
-                                 src="/static/vendor/img/products/pc.png"
-                                 alt="">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Настольные ПК</a>
-                            </h4>
+                {% for category in categories %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="#">
+                                <img class="card-img-top"
+                                     src="{{ category.image.url }}"
+                                     alt="">
+                            </a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="#">{{ category.name }}</a>
+                                </h4>
 
-                            <p class="card-text">Современные мощные настольные ПК для различных задач.</p>
+                                <p class="card-text">{{ category.description }}</p>
+                            </div>
+
                         </div>
-
                     </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#">
-                            <img class="card-img-top"
-                                 src="/static/vendor/img/products/laptop.png" alt="">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Ноутбуки</a>
-                            </h4>
-
-                            <p class="card-text">
-                                Современные ноутбуки. Огромный выбор для любого пользователя.
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#">
-                            <img class="card-img-top"
-                                 src="/static/vendor/img/products/ipad.png"
-                                 alt="">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Планшеты</a>
-                            </h4>
-
-                            <p class="card-text">Широкий выбор планшетов различных производителей.</p>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#">
-                            <img class="card-img-top"
-                                 src="/static/vendor/img/products/smartphone.png"
-                                 alt="">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Смартфоны</a>
-                            </h4>
-
-                            <p class="card-text">Различные смартфоны любой ценовой категории.</p>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#">
-                            <img class="card-img-top"
-                                 src="/static/vendor/img/products/headphones.png"
-                                 alt="">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Наушники</a>
-                            </h4>
-
-                            <p class="card-text">Современные наушники обеспечивают исключительное качество звучания.</p>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#">
-                            <img class="card-img-top"
-                                 src="/static/vendor/img/products/accessories.png"
-                                 alt="">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Аксессуары</a>
-                            </h4>
-
-                            <p class="card-text">Различные аксессуары для техники. От чехлов до внешних аккумуляторов.</p>
-                        </div>
-
-                    </div>
-                </div>
+                {% endfor %}
 
             </div>
 

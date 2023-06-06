@@ -10,11 +10,9 @@
 
             <h1 class="my-4">Магазин</h1>
             <div class="list-group">
-                <a href="#" class="list-group-item">Новинки</a>
-                <a href="#" class="list-group-item">Ноутбуки</a>
-                <a href="#" class="list-group-item">Телефоны</a>
-                <a href="#" class="list-group-item">Планшеты</a>
-                <a href="#" class="list-group-item">Акции</a>
+                {% for category in categories %}
+                    <a href="#" class="list-group-item">{{ category.name }}</a>
+                {% endfor %}
             </div>
 
         </div>
@@ -24,126 +22,27 @@
 
             <div class="row">
 
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#">
-                            <img class="card-img-top"
-                                 src="/static/vendor/img/products/pc.png"
-                                 alt="">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Ультратонкие ноутбуки HP</a>
-                            </h4>
-                            <h5>19 990,00 руб.</h5>
-                            <p class="card-text">Современные материалы обеспечивают сверхпрочность корпуса.</p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <button type="button" class="btn btn-outline-success">Отправить в корзину</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#">
-                            <img class="card-img-top"
-                                 src="/static/vendor/img/products/laptop.png" alt="">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Огромный выбор современных iPad</a>
-                            </h4>
-                            <h5>23 725,00 руб.</h5>
-                            <p class="card-text">
-                                Защита от воды и пыли. Удобный корпус. Батарея большой емкости.
-                            </p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <button type="button" class="btn btn-outline-success">Отправить в корзину</button>
+                {% for product in products %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="#">
+                                <img class="card-img-top"
+                                     src="{{ product.image.url }}"
+                                     alt="">
+                            </a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="#">{{ product.name }}</a>
+                                </h4>
+                                <h5>{{ product.price }} руб.</h5>
+                                <p class="card-text">{{ product.description }}</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button type="button" class="btn btn-outline-success">Отправить в корзину</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#">
-                            <img class="card-img-top"
-                                 src="/static/vendor/img/products/ipad.png"
-                                 alt="">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Новинки iPhone</a>
-                            </h4>
-                            <h5>89 390,00 руб.</h5>
-                            <p class="card-text">Описание айфона. Айфон он и в африке айфон</p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <button type="button" class="btn btn-outline-success">Отправить в корзину</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#">
-                            <img class="card-img-top"
-                                 src="/static/vendor/img/products/smartphone.png"
-                                 alt="">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Телефоны Sumsung</a>
-                            </h4>
-                            <h5>23 340,00 руб.</h5>
-                            <p class="card-text">Современный дизайн. Корейское качество</p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <button type="button" class="btn btn-outline-success">Отправить в корзину</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#">
-                            <img class="card-img-top"
-                                 src="/static/vendor/img/products/headphones.png"
-                                 alt="">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Наушники</a>
-                            </h4>
-                            <h5>13 590,00 руб.</h5>
-                            <p class="card-text">Современные наушники обеспечивают исключительное качество звучания.</p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <button type="button" class="btn btn-outline-success">Отправить в корзину</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#">
-                            <img class="card-img-top"
-                                 src="/static/vendor/img/products/accessories.png"
-                                 alt="">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Аксессуары</a>
-                            </h4>
-                            <h5>890,00 руб.</h5>
-                            <p class="card-text">Различные аксессуары для техники. От чехлов до внешних аккумуляторов.</p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <button type="button" class="btn btn-outline-success">Отправить в корзину</button>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
 
             </div>
 
