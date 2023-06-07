@@ -9,16 +9,16 @@ def index(request):
         'title': 'Магазин',
         'categories': ProductCategory.objects.all()
     }
-    return render(request, 'shop/base.html', context)
+    return render(request, 'shop/index.html', context)
 
 
 """Товары"""
 
 
-def products(request):
+def products(request, category_id):
     context = {
         'title': 'Категория',
-        'products': Product.objects.all(),
+        'products': Product.objects.filter(category=category_id),
         'categories': ProductCategory.objects.all()
     }
     return render(request, 'shop/products.html', context)
