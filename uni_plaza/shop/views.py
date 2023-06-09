@@ -17,8 +17,20 @@ def index(request):
 
 def products(request, category_id):
     context = {
-        'title': 'Категория',
+        'title': ProductCategory.objects.get(id=category_id),
         'products': Product.objects.filter(category=category_id),
         'categories': ProductCategory.objects.all()
     }
     return render(request, 'shop/products.html', context)
+
+
+"""Открытие карточки товара"""
+
+
+def product(request, category_id, product_id):
+    context = {
+        'title': ProductCategory.objects.get(id=category_id),
+        'categories': ProductCategory.objects.all(),
+        'product': Product.objects.filter(id=product_id)
+    }
+    return render(request, 'shop/product.html', context)
