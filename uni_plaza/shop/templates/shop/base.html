@@ -30,6 +30,14 @@
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+        <form action="{% url 'products:search' %}" method="get">
+            <input type="search" placeholder="Название товара" name="q" required="">
+            <button type="submit">
+                Поиск
+            </button>
+        </form>
+
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
