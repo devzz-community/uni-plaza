@@ -34,3 +34,16 @@ def product(request, category_id, product_id):
         'product': Product.objects.filter(id=product_id)
     }
     return render(request, 'shop/product.html', context)
+
+
+"""Строка поиска"""
+
+
+def search(request):
+    search_query = request.GET.get('q', '')
+    context = {
+        'title': 'Магазин',
+        'categories': ProductCategory.objects.all(),
+        'products': Product.objects.filter(name__icontains=search_query),
+    }
+    return render(request, 'shop/search.html', context)
