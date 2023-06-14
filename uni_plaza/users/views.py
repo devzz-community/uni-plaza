@@ -29,9 +29,12 @@ def login(request):
 def registration(request):
     if request.method == 'POST':
         form = UserRegistrationForm(data=request.POST)
+        print()
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('users:login'))
+        else:
+            print(form.errors)
     else:
         form = UserRegistrationForm()
     context = {'form': form}
@@ -42,6 +45,14 @@ def registration(request):
 
 
 def profile(request):
-    form = UserProfileForm(instance=request.user)
+    if request.method == 'POST':
+        form = UserProfileForm(instance=request.user, data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('users:profile'))
+        else:
+            print(form.errors)
+    else:
+        form = UserProfileForm(instance=request.user)
     context = {'title': 'Профиль', 'form': form}
     return render(request, 'users/profile.html', context)
