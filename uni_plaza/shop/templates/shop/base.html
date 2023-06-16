@@ -21,6 +21,12 @@
 </head>
 
 <body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -44,24 +50,22 @@
                     <a class="nav-link" href="{% url 'index' %}">Каталог <i class="fas fa-shopping-bag"></i> </a>
                 </li>
                 {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:profile' %}">Профиль <i class="fas fa-sign-in-alt"></i></a>
-                    </li>
-                    {% if user.is_superuser or user.is_staff %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'admin:index' %}">Админ <i class="fas fa-sign-in-alt"></i></a>
-                        </li>
-                    {% endif %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:logout' %}">Выйти <i class="fas fa-sign-in-alt"></i></a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:login' %}">Войти <i class="fas fa-sign-in-alt"></i></a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users:profile' %}">Профиль <i class="fas fa-sign-in-alt"></i></a>
+                </li>
+                {% if user.is_superuser or user.is_staff %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'admin:index' %}">Админ <i class="fas fa-sign-in-alt"></i></a>
+                </li>
                 {% endif %}
-
-
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users:logout' %}">Выйти <i class="fas fa-sign-in-alt"></i></a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users:login' %}">Войти <i class="fas fa-sign-in-alt"></i></a>
+                </li>
+                {% endif %}
 
 
                 <li class="nav-item dropdown">
