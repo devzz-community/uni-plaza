@@ -13,6 +13,15 @@ def index(request):
     }
     return render(request, 'shop/index.html', context)
 
+""" Каталоги """
+
+
+def catalogs(request):
+    context = {
+        'title': 'Каталоги товаров',
+        'catalogs': ProductCategory.objects.all()
+    }
+    return render(request, 'shop/catalogs.html', context)
 
 """ Товары """
 
