@@ -33,10 +33,12 @@
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
-                        <img class="d-block img-fluid" src="{% static 'vendor/img/slides/apple.jpeg' %}" alt="First slide">
+                        <img class="d-block img-fluid" src="{% static 'vendor/img/slides/apple.jpeg' %}"
+                             alt="First slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block img-fluid" src="{% static 'vendor/img/slides/sumsung.jpeg' %}" alt="Second slide">
+                        <img class="d-block img-fluid" src="{% static 'vendor/img/slides/sumsung.jpeg' %}"
+                             alt="Second slide">
                     </div>
                     <div class="carousel-item">
                         <img class="d-block img-fluid" src="{% static 'vendor/img/slides/hp.jpeg' %}" alt="Third slide">
@@ -55,23 +57,23 @@
             <div class="row">
 
                 {% for category in categories %}
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <a href="products/{{ category.id }}">
-                                <img class="card-img-top"
-                                     src="{{ category.image.url }}"
-                                     alt="">
-                            </a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="products/{{ category.id }}">{{ category.name }}</a>
-                                </h4>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <a href="products/{{ category.id }}">
+                            <img class="card-img-top"
+                                 src="{{ category.image.url }}"
+                                 alt="">
+                        </a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="products/{{ category.id }}">{{ category.name }}</a>
+                            </h4>
 
-                                <p class="card-text">{{ category.description }}</p>
-                            </div>
-
+                            <p class="card-text">{{ category.description }}</p>
                         </div>
+
                     </div>
+                </div>
                 {% endfor %}
 
             </div>
