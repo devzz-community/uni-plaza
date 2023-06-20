@@ -24,7 +24,7 @@ class Product(models.Model):
     category = models.ForeignKey(to=ProductCategory, on_delete=models.PROTECT)  # Ссылка на категорию
 
     def __str__(self):
-        return {self.name}
+        return self.name
 
 
 """ Новый менеджер для обращения ко всем объектам корзины """
