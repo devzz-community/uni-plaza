@@ -47,7 +47,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="products/">Каталоги <i class="fas fa-shopping-bag"></i> </a>
+                    <a class="nav-link" href="{% url 'products:catalogs' %}">Каталоги <i class="fas fa-shopping-bag"></i> </a>
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
