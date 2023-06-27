@@ -2,6 +2,8 @@ from django.db import models
 from users.models import User
 
 
+""" Модель заказа для базы данных """
+
 
 class Order(models.Model):
     CREATED = 0
@@ -15,7 +17,6 @@ class Order(models.Model):
         (DELIVERED, 'Доставлен'),
     )
 
-
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField(max_length=200)
@@ -27,4 +28,3 @@ class Order(models.Model):
 
     def __str__(self):
         return f'Заказ №{self.id}. {self.first_name} {self.last_name}'
-

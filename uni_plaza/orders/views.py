@@ -4,6 +4,9 @@ from common.views import TitleMixin
 from orders.forms import OrderForm
 
 
+""" Контроллер создания заказа """
+
+
 class OrderCreateView(TitleMixin, CreateView):
     template_name = 'orders/order_create.html'
     form_class = OrderForm
