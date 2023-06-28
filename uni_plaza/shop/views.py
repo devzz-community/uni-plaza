@@ -1,63 +1,88 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from shop.models import ProductCategory, Product, Basket
-from users.models import User
+from django.views.generic.base import TemplateView
+from django.views.generic.list import ListView
+from common.views import TitleMixin
 
 """ Главная страница с категориями """
 
 
-def index(request):
-    context = {
-        'title': 'Магазин',
-        'categories': ProductCategory.objects.all()
-    }
-    return render(request, 'shop/index.html', context)
+class IndexView(TitleMixin, TemplateView):
+    template_name = 'shop/index.html'
+    title = 'Магазин'
+
+    def get_context_data(self, **kwargs):
+        context = super(IndexView, self).get_context_data()
+        context['categories'] = ProductCategory.objects.all()
+        return context
+
 
 """ Каталоги """
 
 
-def catalogs(request):
-    context = {
-        'title': 'Каталоги товаров',
-        'catalogs': ProductCategory.objects.all()
-    }
-    return render(request, 'shop/catalogs.html', context)
+class CatalogListView(TitleMixin, ListView):
+    model = ProductCategory
+    template_name = 'shop/catalogs.html'
+    title = 'Каталоги товаров'
+
 
 """ Товары """
 
 
-def products(request, category_id):
-    context = {
-        'title': ProductCategory.objects.get(id=category_id),
-        'products': Product.objects.filter(category=category_id),
-        'categories': ProductCategory.objects.all()
-    }
-    return render(request, 'shop/products.html', context)
+class ProductsListView(ListView):
+    model = Product
+    template_name = 'shop/products.html'
+
+    # paginate_by = 9
+
+    def get_queryset(self):
+        queryset = super(ProductsListView, self).get_queryset()
+        category_id = self.kwargs.get('category_id')
+        return queryset.filter(category_id=category_id) if category_id else queryset
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ListView, self).get_context_data()
+        context['title'] = ProductCategory.objects.get(id=self.kwargs['category_id'])
+        context['categories'] = ProductCategory.objects.all()
+        return context
 
 
 """ Открытие карточки товара """
 
 
-def product(request, category_id, product_id):
-    context = {
-        'title': ProductCategory.objects.get(id=category_id),
-        'categories': ProductCategory.objects.all(),
-        'product': Product.objects.filter(id=product_id)
-    }
-    return render(request, 'shop/product.html', context)
+class ProductListView(ListView):
+    model = Product
+    template_name = 'shop/product.html'
+
+    def get_queryset(self):
+        queryset = super(ProductListView, self).get_queryset()
+        product_id = self.kwargs.get('product_id')
+        return queryset.filter(id=product_id) if product_id else queryset
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ListView, self).get_context_data()
+        context['title'] = Product.objects.get(id=self.kwargs['product_id'])
+        context['categories'] = ProductCategory.objects.all()
+        return context
 
 
 """ Строка поиска """
 
 
-def search(request):
-    search_query = request.GET.get('q', '')
-    context = {
-        'title': 'Магазин',
-        'categories': ProductCategory.objects.all(),
-        'products': Product.objects.filter(name__icontains=search_query),
-    }
-    return render(request, 'shop/search.html', context)
+class SearchView(TitleMixin, ListView):
+    model = Product
+    template_name = 'shop/search.html'
+    title = 'Результаты поиска'
+
+    def get_queryset(self):
+        return Product.objects.filter(name__icontains=self.request.GET.get('q'))
+
+    def get_context_data(self, **kwargs):
+        context = super(SearchView, self).get_context_data(**kwargs)
+        context['products'] = self.request.GET.get('q')
+        context['categories'] = ProductCategory.objects.all()
+        return context
 
 
 """ Добавление товара в корзину """
@@ -71,9 +96,9 @@ def basket_add(request, product_id):
     if not baskets.exists():
         Basket.objects.create(user=request.user, product=product, quantity=1)
     else:
-        baskets = baskets.first()
-        baskets.quantity += 1
-        baskets.save()
+        basket = baskets.first()
+        basket.quantity += 1
+        basket.save()
 
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
