@@ -20,8 +20,8 @@
 # Сегменты рынка
 В данном разделе находятся изученные сегменты рынка и ниши.
 ## Турагентство
-Общая информация по нише:
-https://www.kp.ru/money/biznes/kak-otkryt-turagentstvo-s-nulya/
+Общая информация по нише: <br>
+https://www.kp.ru/money/biznes/kak-otkryt-turagentstvo-s-nulya/ <br>
 
 Турагентства перепродают туры крупных туроператоров.
 
@@ -30,18 +30,18 @@ https://www.kp.ru/money/biznes/kak-otkryt-turagentstvo-s-nulya/
 Таким образом, главная фича интернет-магазина турагенства - это интеграция
 с API туроператоров. 
 
-Примеры API:
-https://support.travelpayouts.com/hc/ru/articles/360022674591-API-%D0%BE%D1%82-Travelata-ru
-https://docs.saaspegasus.com/apis.html
-https://www.tez-tour.com/article.html?id=7015574
+Примеры API:<br>
+https://support.travelpayouts.com/hc/ru/articles/360022674591-API-%D0%BE%D1%82-Travelata-ru <br>
+https://docs.saaspegasus.com/apis.html <br>
+https://www.tez-tour.com/article.html?id=7015574 <br>
 
 ### Конкуренты
-Компании, предлагающие изготовление интернет-магазинов турагенств:
-https://tourvisor.ru/b2b/sajt-dlya-turagentstv-besplatno
-https://pro.sletat.ru/web-sites/#prices
-https://design.megagroup.ru/solution/3905136
-https://www.redsign.ru/templates/corporate/redsign.gotravel/
-https://www.templatemonster.com/ru/wordpress-themes-type/83930.html
+Компании, предлагающие изготовление интернет-магазинов турагенств: <br>
+https://tourvisor.ru/b2b/sajt-dlya-turagentstv-besplatno <br>
+https://pro.sletat.ru/web-sites/#prices <br>
+https://design.megagroup.ru/solution/3905136 <br>
+https://www.redsign.ru/templates/corporate/redsign.gotravel/ <br>
+https://www.templatemonster.com/ru/wordpress-themes-type/83930.html <br>
 
 
 ## Агрегатор дропшиппинг-поставщиков
@@ -60,17 +60,17 @@ https://www.templatemonster.com/ru/wordpress-themes-type/83930.html
 По сути, превращение интернет-магазина в маркетплейс по продаже товаров от множества поставщиков.
 
 ### Оптовые дропшипинг-поставщики
-https://4partners.io/ru  -  от одежды до электроники
-https://spb.outmaxshop.com/rabota-s-outmax  - одежда, кроссовки, аксессуары
-https://ctradei.com/shop/folder/dropshipping   -  текстиль
-https://partner.mosdommebel.ru/agents   - Мебель
-https://partners.pm.ru/   - еще мебель
-https://mondi.su/services/dropshipping-odezhda  - одежда
-https://optolider.ru/dropshipping/
-https://p5s.ru/e-commerce/api/   - 18+
+https://4partners.io/ru  -  от одежды до электроники <br>
+https://spb.outmaxshop.com/rabota-s-outmax  - одежда, кроссовки, аксессуары <br>
+https://ctradei.com/shop/folder/dropshipping   -  текстиль <br>
+https://partner.mosdommebel.ru/agents   - Мебель <br>
+https://partners.pm.ru/   - еще мебель <br>
+https://mondi.su/services/dropshipping-odezhda  - одежда <br>
+https://optolider.ru/dropshipping/ <br>
+https://p5s.ru/e-commerce/api/   - 18+ <br>
 
 ### Конкуренты
-Компании, которые предлагают готовые сайты в аренду с подключенными дропшиппинг-поставщиками:
+Компании, которые предлагают готовые сайты в аренду с подключенными дропшиппинг-поставщиками: <br>
 https://ru-dropshipping.ru/katalog-dropshipping-postavshikov
 
 
@@ -81,10 +81,10 @@ https://ru-dropshipping.ru/katalog-dropshipping-postavshikov
 API, что не могут дать конкуренты.
 
 ### Преимущество сегмента
-Уникальные, более низкие оптовые цены от поставщиков.
-Своя БД товаров, которую также можно монетизировать.
-Реализованный API конкретных поставщиков, который также можно монетизировать.
+Уникальные, более низкие оптовые цены от поставщиков. <br>
+Своя БД товаров, которую также можно монетизировать. <br>
+Реализованный API конкретных поставщиков, который также можно монетизировать. <br>
 
 ### Примеры баз данных товаров
-Готовая мебель от крупных фабрик.
-Конкретный сегмент одежды (например, футболки или кроссовки)
+Готовая мебель от крупных фабрик. <br>
+Конкретный сегмент одежды (например, футболки или кроссовки) <br>
