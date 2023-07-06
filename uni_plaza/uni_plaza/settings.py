@@ -39,10 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
 
+    'import_export',
+    'rest_framework',
+
     'shop',
     'users',
     'orders',
-    'import_export',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -146,3 +149,10 @@ LOGOUT_REDIRECT_URL = '/'
 # Import Export
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True
+
+# Django REST Framework
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 2,
+}
