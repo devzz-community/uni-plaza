@@ -41,6 +41,9 @@ INSTALLED_APPS = [
 
     'import_export',
     'rest_framework',
+    'rest_framework.authtoken',
+    'djoser',
+    'drf_yasg',
 
     'shop',
     'users',
@@ -155,4 +158,8 @@ IMPORT_EXPORT_USE_TRANSACTIONS = True
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 2,
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 }
