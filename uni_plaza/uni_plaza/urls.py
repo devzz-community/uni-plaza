@@ -17,8 +17,11 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 from django.conf.urls.static import static
 from django.conf import settings
-# from rest_framework.authtoken.views import obtain_auth_token
 from .yasg import urlpatterns as doc_urls
+from .yasg import (DecoratedTokenObtainPairView,
+                   DecoratedTokenRefreshView,
+                   DecoratedTokenVerifyView,
+                   DecoratedTokenBlacklistView)
 
 from shop.views import IndexView
 
@@ -31,8 +34,11 @@ urlpatterns = [
     path('orders/', include('orders.urls', namespace='orders')),
     path('api/', include('api.urls', namespace='api')),
     path('auth/', include('djoser.urls')),
-    re_path(r'^auth/', include('djoser.urls.authtoken')),
-    # path('api-token-auth/', obtain_auth_token),
+
+    path('api/token/', DecoratedTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', DecoratedTokenRefreshView.as_view(), name='token_refresh'),
+    path('api/token/verify/', DecoratedTokenVerifyView.as_view(), name='token_verify'),
+    path('api/token/blacklist/', DecoratedTokenBlacklistView.as_view(), name='token_blacklist'),
 ]
 
 urlpatterns += doc_urls
