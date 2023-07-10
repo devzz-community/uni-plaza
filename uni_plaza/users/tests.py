@@ -1,5 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
+
+
 class UsersManagersTests(TestCase):
     def test_create_user(self):
         User = get_user_model()
@@ -20,6 +22,7 @@ class UsersManagersTests(TestCase):
             User.objects.create_user(email='')
         with self.assertRaises(ValueError):
             User.objects.create_user(email='', password="foo")
+
     def test_create_superuser(self):
         User = get_user_model()
         admin_user = User.objects.create_superuser('super@user.com', 'foo')

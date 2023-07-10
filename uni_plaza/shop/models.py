@@ -1,10 +1,11 @@
 from django.db import models
 from users.models import User
 
-""" Категории товаров """
-
 
 class ProductCategory(models.Model):
+    """
+    Категории товаров
+    """
     name = models.CharField(max_length=128, unique=True)  # Название
     description = models.TextField(null=True, blank=True)  # Описание
     image = models.ImageField(upload_to='category_images', null=True)  # Изображение
@@ -13,10 +14,10 @@ class ProductCategory(models.Model):
         return self.name
 
 
-""" Товары """
-
-
 class Product(models.Model):
+    """
+    Товары
+    """
     name = models.CharField(max_length=256)  # Наименование
     description = models.TextField(null=True, blank=True)  # Описание
     price = models.DecimalField(max_digits=8, decimal_places=2)  # Цена
@@ -27,20 +28,22 @@ class Product(models.Model):
         return self.name
 
 
-""" Новый менеджер для обращения ко всем объектам корзины """
-
-
 class BasketQuerySet(models.QuerySet):
+    """
+    Новый менеджер для обращения ко всем объектам корзины
+    """
+
     def total_sum(self):
         return sum(basket.sum() for basket in self)
 
     def total_quantity(self):
         return sum(basket.quantity for basket in self)
 
-""" Корзина товаров """
-
 
 class Basket(models.Model):
+    """
+    Корзина товаров
+    """
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     product = models.ForeignKey(to=Product, on_delete=models.CASCADE)
     quantity = models.PositiveSmallIntegerField(default=0)

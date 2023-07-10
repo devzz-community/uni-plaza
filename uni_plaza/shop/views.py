@@ -1,70 +1,33 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from shop.models import ProductCategory, Product, Basket
-from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from common.views import TitleMixin
-
-""" Главная страница с категориями """
-
-
-class IndexView(TitleMixin, TemplateView):
-    template_name = 'shop/index.html'
-    title = 'Магазин'
-
-    def get_context_data(self, **kwargs):
-        context = super(IndexView, self).get_context_data()
-        context['categories'] = ProductCategory.objects.all()
-        return context
+from rest_framework.viewsets import ModelViewSet
+from shop.serializers import ProductSerializers, ProductCategorySerializers
+from rest_framework.permissions import IsAdminUser
 
 
-""" Каталоги """
+class ProductCategoryViewSet(ModelViewSet):
+    """ Категории товаров """
+    queryset = ProductCategory.objects.all()
+    serializer_class = ProductCategorySerializers
+
+    def get_permissions(self):
+        if self.action in ('create', 'update', 'destroy'):
+            self.permission_classes = (IsAdminUser,)
+        return super(ProductCategoryViewSet, self).get_permissions()
 
 
-class CatalogListView(TitleMixin, ListView):
-    model = ProductCategory
-    template_name = 'shop/catalogs.html'
-    title = 'Каталоги товаров'
+class ProductViewSet(ModelViewSet):
+    """ Работа с товарами """
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializers
 
-
-""" Товары """
-
-
-class ProductsListView(ListView):
-    model = Product
-    template_name = 'shop/products.html'
-
-    # paginate_by = 9
-
-    def get_queryset(self):
-        queryset = super(ProductsListView, self).get_queryset()
-        category_id = self.kwargs.get('category_id')
-        return queryset.filter(category_id=category_id) if category_id else queryset
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super(ListView, self).get_context_data()
-        context['title'] = ProductCategory.objects.get(id=self.kwargs['category_id'])
-        context['categories'] = ProductCategory.objects.all()
-        return context
-
-
-""" Открытие карточки товара """
-
-
-class ProductListView(ListView):
-    model = Product
-    template_name = 'shop/product.html'
-
-    def get_queryset(self):
-        queryset = super(ProductListView, self).get_queryset()
-        product_id = self.kwargs.get('product_id')
-        return queryset.filter(id=product_id) if product_id else queryset
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super(ListView, self).get_context_data()
-        context['title'] = Product.objects.get(id=self.kwargs['product_id'])
-        context['categories'] = ProductCategory.objects.all()
-        return context
+    def get_permissions(self):
+        if self.action in ('create', 'update', 'destroy'):
+            self.permission_classes = (IsAdminUser,)
+        return super(ProductViewSet, self).get_permissions()
 
 
 """ Строка поиска """
