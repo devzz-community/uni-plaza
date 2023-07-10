@@ -14,14 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, re_path, include
+from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-from .yasg import urlpatterns as doc_urls
-from .yasg import (DecoratedTokenObtainPairView,
-                   DecoratedTokenRefreshView,
-                   DecoratedTokenVerifyView,
-                   DecoratedTokenBlacklistView)
+from .yasg import urlpatterns as doc_urls, DecoratedTokenBlacklistView
+
 
 from shop.views import IndexView
 
@@ -34,11 +31,9 @@ urlpatterns = [
     path('orders/', include('orders.urls', namespace='orders')),
     path('api/', include('api.urls', namespace='api')),
     path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.jwt')),
+    path('auth/jwt/blacklist/', DecoratedTokenBlacklistView.as_view(), name='token_blacklist'),
 
-    path('api/token/', DecoratedTokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', DecoratedTokenRefreshView.as_view(), name='token_refresh'),
-    path('api/token/verify/', DecoratedTokenVerifyView.as_view(), name='token_verify'),
-    path('api/token/blacklist/', DecoratedTokenBlacklistView.as_view(), name='token_blacklist'),
 ]
 
 urlpatterns += doc_urls
