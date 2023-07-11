@@ -17,16 +17,21 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-
-from shop.views import IndexView
+from .yasg import urlpatterns as doc_urls, DecoratedTokenBlacklistView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', IndexView.as_view(), name='index'),
     path('products/', include('shop.urls', namespace='products')),
-    path('users/', include('users.urls', namespace='users')),
+    path('accounts/', include('users.urls', namespace='users')),
     path('orders/', include('orders.urls', namespace='orders')),
+    # path('api/', include('api.urls', namespace='api')),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.jwt')),
+    path('auth/jwt/blacklist/', DecoratedTokenBlacklistView.as_view(), name='token_blacklist'),
+
 ]
+
+urlpatterns += doc_urls
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
