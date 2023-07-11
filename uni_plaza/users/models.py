@@ -14,12 +14,22 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(_('last name'), max_length=50, blank=True)
     email = models.EmailField(_('email address'), db_index=True, unique=True)
     image = models.ImageField(upload_to='users_images', null=True, blank=True)
-    is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-    date_joined = models.DateTimeField(default=timezone.now)
+    is_staff = models.BooleanField(_('staff'), default=False)
+    is_active = models.BooleanField(_('active'), default=False)
+    date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = UserManager()
 
     def __str__(self):
         return self.email
+
+
+class EmailVerification(models.Model):
+    code = models.UUIDField(unique=True)
+    user = models.ForeignKey(to=User,on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    expiration = models.DateTimeField()
+
+    def __str__(self):
+        return f'EmailVerification object for {self.user.email}'

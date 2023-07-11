@@ -1,10 +1,8 @@
 from django.urls import path, include
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import LogoutView
+from users.views import ActivateUser
 
 app_name = 'users'
 
 urlpatterns = [
-
-
+    path('activate/<uid>/<token>', ActivateUser.as_view({'get': 'activation'}), name='activation'),
 ]

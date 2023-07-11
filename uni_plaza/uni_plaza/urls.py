@@ -22,7 +22,7 @@ from .yasg import urlpatterns as doc_urls, DecoratedTokenBlacklistView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', include('shop.urls', namespace='products')),
-    path('users/', include('users.urls', namespace='users')),
+    path('accounts/', include('users.urls', namespace='users')),
     path('orders/', include('orders.urls', namespace='orders')),
     # path('api/', include('api.urls', namespace='api')),
     path('auth/', include('djoser.urls')),
