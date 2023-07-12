@@ -2,10 +2,10 @@ from django.db import models
 from users.models import User
 
 
-""" Модель заказа для базы данных """
-
-
 class Order(models.Model):
+    """
+    Модель заказа
+    """
     CREATED = 0
     PAID = 1
     ON_WAY = 2

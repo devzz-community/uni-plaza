@@ -20,6 +20,9 @@ class ProductSerializers(serializers.ModelSerializer):
 
 
 class BasketSerializers(serializers.ModelSerializer):
+    """
+    Корзина пользователя
+    """
     product = ProductSerializers()
     sum = fields.FloatField(required=False)
     total_sum = fields.SerializerMethodField()
