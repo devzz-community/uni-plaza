@@ -1,9 +1,10 @@
 from shop.models import ProductCategory, Product, Basket
-from rest_framework import status
+from rest_framework import status, generics
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from shop.serializers import ProductSerializers, ProductCategorySerializers, BasketSerializers
-from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from rest_framework.permissions import IsAdminUser, IsAuthenticated, AllowAny
+from django_filters import rest_framework as filters
 
 
 class ProductCategoryViewSet(ModelViewSet):
@@ -54,22 +55,23 @@ class BasketViewSet(ModelViewSet):
             return Response({'product_id': 'This field is required.'}, status=status.HTTP_400_BAD_REQUEST)
 
 
+class ProductFilter(filters.FilterSet):
+    """
+    Фильтр поиска продуктов
+    """
+    name = filters.CharFilter(field_name="name", lookup_expr='icontains')
+    category = filters.CharFilter(field_name="category__name", lookup_expr='icontains')
 
-# """ Строка поиска """
-#
-#
-# class SearchView(TitleMixin, ListView):
-#     model = Product
-#     template_name = 'shop/search.html'
-#     title = 'Результаты поиска'
-#
-#     def get_queryset(self):
-#         return Product.objects.filter(name__icontains=self.request.GET.get('q'))
-#
-#     def get_context_data(self, **kwargs):
-#         context = super(SearchView, self).get_context_data(**kwargs)
-#         context['products'] = self.request.GET.get('q')
-#         context['categories'] = ProductCategory.objects.all()
-#         return context
+    class Meta:
+        model = Product
+        fields = ['category']
 
 
+class ProductList(generics.ListAPIView):
+    """
+    Поиск продуктов по названию
+    """
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializers
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_class = ProductFilter
