@@ -51,7 +51,7 @@ class Basket(models.Model):
     objects = BasketQuerySet.as_manager()
 
     def __str__(self):
-        return f'Корзина для: {self.user.name} | Товар: {self.product.name}'
+        return f'Корзина для: {self.user.email} | Товар: {self.product.name}'
 
     def sum(self):
         return self.product.price * self.quantity

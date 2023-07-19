@@ -1,5 +1,5 @@
 from django.contrib import admin
-from shop.models import ProductCategory, Product
+from shop.models import ProductCategory, Product, Basket
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 from shop.forms import CategoryChoiceForm, CategoryConfirmImportForm
@@ -49,3 +49,4 @@ class ProductAdmin(ImportExportModelAdmin):
 
 admin.site.register(ProductCategory)
 admin.site.register(Product, ProductAdmin)
+admin.site.register(Basket)
