@@ -17,7 +17,11 @@ class ActivateUser(UserViewSet):
 
         return serializer_class(*args, **kwargs)
 
-    def activation(self, request, uid, token, *args, **kwargs):
+    # def activation(self, request, uid, token, *args, **kwargs):
+    #     super().activation(request, *args, **kwargs)
+    #     return Response(status=status.HTTP_204_NO_CONTENT)
+
+    def activation(self, request, *args, **kwargs):
         super().activation(request, *args, **kwargs)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
