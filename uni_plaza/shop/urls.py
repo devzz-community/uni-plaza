@@ -13,7 +13,5 @@ router.register(r'baskets', BasketViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('search/', ProductList.as_view(), name='search'),  # Поиск товаров
-    # path('basket/add/<int:product_id>/', basket_add, name='basket_add'),  # Добавление товара в корзину
-    # path('basket/remove/<int:basket_id>/', basket_remove, name='basket_remove'),  # Удаление товара из корзины
 
 ]
