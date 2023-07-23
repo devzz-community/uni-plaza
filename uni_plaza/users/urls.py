@@ -1,5 +1,5 @@
 from django.urls import path, include
-from users.views import ActivateUser, UserViewSet
+from users.views import ActivateUser, UserViewSet, LoginView
 from rest_framework import routers
 
 app_name = 'users'
@@ -10,4 +10,5 @@ router.register(r'users', UserViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('activate/<uid>/<token>', ActivateUser.as_view({'get': 'activation'}), name='activation'),
+    path('login/', LoginView.as_view(), name='login'),
 ]
