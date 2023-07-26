@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'djoser',
     'drf_yasg',
     'django_filters',
-    # 'corsheaders',
+    'corsheaders',
 
     'shop',
     'users',
@@ -57,7 +57,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    # 'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -188,7 +188,7 @@ REST_FRAMEWORK = {
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
     'USERNAME_RESET_CONFIRM_URL': '#/username/reset/confirm/{uid}/{token}',
-    'ACTIVATION_URL': 'accounts/activate/{uid}/{token}',
+    'ACTIVATION_URL': 'auth/activate/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL': True,
     'SERIALIZERS': {},
     'USER_CREATE_PASSWORD_RETYPE': True,
@@ -248,12 +248,12 @@ SIMPLE_JWT = {
 
 # CORS Headers
 
-# CORS_ALLOW_ALL_ORIGINS = False
-# CORS_ALLOW_CREDENTIALS = True
-#
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:8000",
-#     "http://localhost:3000",
-#     "http://127.0.0.1:8000",
-#     "http://127.0.0.1:3000",
-# ]
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+    "http://localhost:5173",
+    "http://127.0.0.1:8000",
+    "http://127.0.0.1:5173",
+]

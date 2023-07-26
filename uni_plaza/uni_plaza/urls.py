@@ -22,14 +22,14 @@ from .yasg import urlpatterns as doc_urls, DecoratedTokenBlacklistView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', include('shop.urls', namespace='products')),
-    path('accounts/', include('users.urls', namespace='users')),
+    path('auth/', include('users.urls', namespace='users')),
     path('orders/', include('orders.urls', namespace='orders')),
     # path('api/', include('api.urls', namespace='api')),
 
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.jwt')),
-
-    path('auth/jwt/blacklist/', DecoratedTokenBlacklistView.as_view(), name='token_blacklist'),
+    # path('auth/', include('djoser.urls')),
+    # path('auth/', include('djoser.urls.jwt')),
+    #
+    # path('auth/jwt/blacklist/', DecoratedTokenBlacklistView.as_view(), name='token_blacklist'),
 
 ]
 
