@@ -1,11 +1,8 @@
 from djoser.views import UserViewSet
-from rest_framework.response import Response
-from rest_framework import status
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAdminUser
 from users.models import User
 from users.serializers import UserSerializers
-# cookieapp/views.py
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.middleware import csrf
 from rest_framework.views import APIView
