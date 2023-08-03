@@ -23,7 +23,7 @@ class TestCatalogs:
         catalog_list = json.loads(response.content).get('results')
         assert_that(len(catalog_list), equal_to(0), "Incorrect catalog count")
 
-    def test_one_product(self, client):
+    def test_one_catalog(self, client):
         """
             Получение списка каталогов. В БД только один каталог.
         """
