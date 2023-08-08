@@ -181,6 +181,8 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ],
+    'EXCEPTION_HANDLER': 'uni_plaza.exceptions.core_exception_handler',  # Кастомный обработчик исключений
+    'NON_FIELD_ERRORS_KEY': 'error',
 }
 
 # Djoser
