@@ -240,7 +240,8 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainSlidingSerializer",
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 
-    'AUTH_COOKIE': 'access_token',  # Имя cookie. Включает файлы cookie, если установлено значение.
+    # 'AUTH_COOKIE': 'access_token',  # Имя cookie. Включает файлы cookie, если установлено значение.
+    'AUTH_COOKIE': 'refresh_token',  # Имя cookie. Включает файлы cookie, если установлено значение.
     'AUTH_COOKIE_DOMAIN': None,  # A string like "example.com", or None for standard domain cookie.
     'AUTH_COOKIE_SECURE': False,  # Whether the auth cookies should be secure (https:// only).
     'AUTH_COOKIE_HTTP_ONLY': True,  # Http only cookie flag.It's not fetch by javascript.
