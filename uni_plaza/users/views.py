@@ -64,19 +64,23 @@ class LoginView(APIView):
         user = authenticate(email=email, password=password)
         if user is not None:
             if user.is_active:
-                data = get_tokens_for_user(user)
+                # data = get_tokens_for_user(user)
+                tokens = get_tokens_for_user(user)
                 response.set_cookie(
                     key=settings.SIMPLE_JWT['AUTH_COOKIE'],
-                    value=data["access"],
+                    # value=data["access"],
+                    value=tokens['refresh'],
                     expires=settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME'],
                     secure=settings.SIMPLE_JWT['AUTH_COOKIE_SECURE'],
                     httponly=settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
                     samesite=settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
                 )
                 csrf.get_token(request)
-                response.data = {"Success": "Login successfully", "data": data}
+                response.data = {"Success": "Login successfully", "access": tokens['access']}
                 return response
             else:
-                return Response({"No active": "This account is not active!!"}, status=status.HTTP_404_NOT_FOUND)
+                # return Response({"No active": "This account is not active!!"}, status=status.HTTP_404_NOT_FOUND)
+                return Response({"errors": "This account is not active!!"}, status=status.HTTP_404_NOT_FOUND)
         else:
-            return Response({"Invalid": "Invalid username or password!!"}, status=status.HTTP_404_NOT_FOUND)
+            # return Response({"Invalid": "Invalid username or password!!"}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"errors": "Invalid username or password!!"}, status=status.HTTP_404_NOT_FOUND)
