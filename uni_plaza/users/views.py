@@ -86,19 +86,4 @@ class LoginView(APIView):
             return Response({"errors": "Invalid username or password!!"}, status=status.HTTP_404_NOT_FOUND)
 
 
-# class UserVerify(APIView):
-#     """ Проверка пользователя """
-#     queryset = User.objects.all()
-#
-#     def get(self, request):
-#         request.user.
-#         # if request.user.is_authenticated:
-#         #     return Response({'True'}, status=status.HTTP_200_OK)
-#         # else:
-#         #     return Response({'False'}, status=status.HTTP_204_NO_CONTENT)
-#
-#         # if user is not None:
-#
-#         # if self.action in ('create', 'update', 'destroy'):
-#         #     self.permission_classes = (IsAdminUser,)
-#         # return super(UserViewSet, self).get_permissions()
+

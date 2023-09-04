@@ -1,5 +1,5 @@
 from django.urls import path, include
-from users.views import ActivateUser, UserViewSet, LoginView, UserVerify
+from users.views import ActivateUser, UserViewSet, LoginView
 from rest_framework import routers
 from uni_plaza.yasg import DecoratedTokenBlacklistView
 
@@ -16,6 +16,6 @@ urlpatterns = [
     path('', include('djoser.urls')),
     # path('', include('djoser.urls.jwt')),
 
-    # path('verify/', UserVerify.as_view(), name='verify'),
+
     path('logout/', DecoratedTokenBlacklistView.as_view(), name='token_blacklist'),
 ]
