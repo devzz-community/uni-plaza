@@ -5,7 +5,7 @@ from orders.views import OrderViewSet
 app_name = 'orders'
 
 router = routers.DefaultRouter()
-router.register(r'order', OrderViewSet)
+router.register(r'orders', OrderViewSet)
 
 urlpatterns = [
     # path('order_create/', OrderViewSet.as_view({'post': 'create'}), name='order_create'),
