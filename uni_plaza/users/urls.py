@@ -16,5 +16,6 @@ urlpatterns = [
     path('', include('djoser.urls')),
     path('', include('djoser.urls.jwt')),
 
+
     path('logout/', DecoratedTokenBlacklistView.as_view(), name='token_blacklist'),
 ]
