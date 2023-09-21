@@ -11,7 +11,7 @@ class TestSearchProduct:
     """
         Тесты на API по работе с поиском товаров по названию
     """
-    endpoint = 'api/market/search/'
+    endpoint = '/api/market/search/'
 
     @pytest.fixture
     def products_list(self):
