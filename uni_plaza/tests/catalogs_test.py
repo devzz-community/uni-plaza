@@ -11,7 +11,7 @@ class TestCatalogs:
     """
         Тесты на API по работе с каталогами товаров
     """
-    endpoint = '/products/catalogs/'
+    endpoint = 'api/market/catalogs/'
 
     def test_no_catalog(self, client):
         """

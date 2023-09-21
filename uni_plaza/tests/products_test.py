@@ -11,7 +11,7 @@ class TestProduct:
     """
         Тесты на API по работе с товарами
     """
-    endpoint = '/products/products/'
+    endpoint = 'api/market/products/'
 
     def test_no_product(self, client):
         """
