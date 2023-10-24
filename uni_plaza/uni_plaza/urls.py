@@ -17,19 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-from .yasg import urlpatterns as doc_urls, DecoratedTokenBlacklistView
+from .yasg import urlpatterns as doc_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/market/', include('shop.urls', namespace='products')),
     path('api/auth/', include('users.urls', namespace='users')),
     path('api/market/', include('orders.urls', namespace='orders')),
-    # path('api/', include('api.urls', namespace='api')),
-
-    # path('auth/', include('djoser.urls')),
-    # path('auth/', include('djoser.urls.jwt')),
-    #
-    # path('auth/jwt/blacklist/', DecoratedTokenBlacklistView.as_view(), name='token_blacklist'),
 
 ]
 
